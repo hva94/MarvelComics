@@ -10,25 +10,22 @@
         android:id="@+id/searchView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:queryHint="@string/hint_search"
+        app:iconifiedByDefault="false"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:paddingBottom="@dimen/common_padding_min"
-        android:paddingStart="@dimen/common_padding_none"
-        android:paddingEnd="@dimen/common_padding_min"
         android:clipToPadding="false"
         tools:listitem="@layout/item_comic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchView"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/btnFavorites"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -37,6 +34,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/btnFavorites"
+        android:layout_width="@dimen/label_favorites_width"
+        android:layout_height="wrap_content"
+        android:text="@string/label_favorites"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
