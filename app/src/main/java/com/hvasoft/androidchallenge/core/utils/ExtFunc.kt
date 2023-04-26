@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.snackbar.Snackbar
+import com.hvasoft.androidchallenge.data.models.Thumbnail
 import java.security.MessageDigest
 
 object ExtFunc {
@@ -49,5 +50,9 @@ object ExtFunc {
     fun Fragment.hideKeyboard() {
         val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(requireView().windowToken, 0)
+    }
+
+    fun Thumbnail.url(): String {
+        return "$path.$extension"
     }
 }

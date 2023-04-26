@@ -3,6 +3,6 @@ package com.hvasoft.androidchallenge.data.models
 data class Creators(
     val available: Int,
     val collectionURI: String,
-    val items: List<CharacterSummary>,
+    var items: List<Creator>,
     val returned: Int
 )

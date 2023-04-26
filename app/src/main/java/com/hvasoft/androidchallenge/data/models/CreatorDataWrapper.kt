@@ -2,13 +2,13 @@ package com.hvasoft.androidchallenge.data.models
 
 import com.google.gson.annotations.SerializedName
 
-data class ComicDataWrapper(
+data class CreatorDataWrapper(
     val attributionHTML: String,
     val attributionText: String,
     val code: Int,
     val copyright: String,
     @SerializedName("data")
-    val comicsData: ComicsData,
+    val creatorsData: CreatorsData,
     val etag: String,
     val status: String
 )

@@ -1,14 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/common_padding_min"
     tools:context=".presentation.favorite_comic_list.FavoriteComicFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivComicPhoto"
+        android:layout_width="@dimen/photo_width"
+        android:layout_height="@dimen/photo_height"
+        android:contentDescription="@null"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:paddingBottom="@dimen/common_padding_default"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/Theme.AndroidChallenge.PhotoGrid" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tvComicTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_padding_min"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:maxLines="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivComicPhoto"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Comic title" />
+
+    <ScrollView
+        android:id="@+id/svComicResume"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_margin="@dimen/common_padding_min"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivComicPhoto"
+        app:layout_constraintTop_toBottomOf="@id/tvComicTitle"
+        tools:text="Comic description - data">
+
+        <TextView
+            android:id="@+id/tvComicResume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/common_padding_min"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivComicPhoto"
+            app:layout_constraintTop_toBottomOf="@id/tvComicTitle"
+            tools:text="Comic resume - data" />
+
+    </ScrollView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCreator"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_margin="@dimen/common_padding_min"
+        app:cardCornerRadius="128dp"
+        app:cardElevation="@dimen/common_padding_none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivComicPhoto">
+
+        <ImageView
+            android:id="@+id/ivCreatorPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_foreground" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvCreatorName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_padding_default"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/cvCreator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cvCreator"
+        app:layout_constraintTop_toBottomOf="@id/ivComicPhoto"
+        app:layout_constraintVertical_bias="0.25"
+        tools:text="Creator's name" />
+
+    <TextView
+        android:id="@+id/tvCreatorRole"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_padding_default"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/cvCreator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cvCreator"
+        app:layout_constraintTop_toBottomOf="@id/tvCreatorName"
+        app:layout_constraintVertical_bias="0.25"
+        tools:text="Creator's rol" />
+
+    <TextView
+        android:id="@+id/tvVariants"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_padding_min"
+        android:text="@string/label_variants"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvCreator" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvVariants"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_padding_min"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/common_padding_default"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvVariants"
+        tools:listitem="@layout/item_variant" />
+
+    <Button
+        android:id="@+id/btnFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_padding_min"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvVariants"
+        tools:text="@string/label_add_favorite" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

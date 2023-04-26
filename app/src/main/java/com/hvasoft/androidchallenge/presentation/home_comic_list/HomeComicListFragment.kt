@@ -27,11 +27,11 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeComicListFragment : Fragment(), OnClickListener {
 
-    private val homeComicListViewModel: HomeComicListViewModel by viewModels()
-    private lateinit var homeComicListAdapter: HomeComicListAdapter
-
     private var _binding: FragmentHomeComicListBinding? = null
     private val binding get() = _binding!!
+
+    private val homeComicListViewModel: HomeComicListViewModel by viewModels()
+    private lateinit var homeComicListAdapter: HomeComicListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,12 +54,19 @@ class HomeComicListFragment : Fragment(), OnClickListener {
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let { homeComicListViewModel.getComicsByStartingTitle(it.lowercase()) }
-                hideKeyboard()
+                query?.let {
+                    homeComicListViewModel.getComicsByStartingTitle(it.lowercase())
+                    hideKeyboard()
+                }
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText.isNullOrEmpty()) {
+                    homeComicListViewModel.getComics()
+                    hideKeyboard()
+                    binding.searchView.clearFocus()
+                }
                 return true
             }
         })
@@ -85,7 +92,7 @@ class HomeComicListFragment : Fragment(), OnClickListener {
                             binding.progressBar.visibility = View.VISIBLE
                         }
                         Status.ERROR -> {
-                            showMessage(it.message.toString())
+                            showMessage(it.message.toString(), isError = true)
                             binding.progressBar.visibility = View.INVISIBLE
                         }
                         Status.SUCCESS -> {

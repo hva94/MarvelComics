@@ -5,7 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 class GridSpacingItemDecoration : RecyclerView.ItemDecoration() {
-    private val spacing = 50
+    private val spacing = 25
     override fun getItemOffsets(
         outRect: Rect,
         view: View,

@@ -2,9 +2,7 @@ package com.hvasoft.androidchallenge.di
 
 import com.hvasoft.androidchallenge.data.repository.ComicRepositoryImpl
 import com.hvasoft.androidchallenge.domain.repository.ComicRepository
-import com.hvasoft.androidchallenge.domain.use_case.ComicUseCases
-import com.hvasoft.androidchallenge.domain.use_case.GetComicsByStartingTitleUseCase
-import com.hvasoft.androidchallenge.domain.use_case.GetComicsUseCase
+import com.hvasoft.androidchallenge.domain.use_case.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,9 +21,12 @@ object AppModule {
     @Provides
     fun provideComicsUseCases(
         repository: ComicRepository
-    ): ComicUseCases = ComicUseCases(
+    ): ComicsUseCases = ComicsUseCases(
         getComics = GetComicsUseCase(repository),
-        getComicsByStartingTitle = GetComicsByStartingTitleUseCase(repository)
+        getComicsByStartingTitle = GetComicsByStartingTitleUseCase(repository),
+        getComicDetail = GetComicDetailUseCase(repository),
+        getVariants = GetVariantsUseCase(repository),
+        updateFavorite = UpdateFavoriteUseCase(repository)
     )
 
 }

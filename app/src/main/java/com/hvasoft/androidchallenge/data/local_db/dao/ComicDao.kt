@@ -19,4 +19,7 @@ interface ComicDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(comics: List<Comic>)
 
+    @Update
+    suspend fun updateFavorite(comic: Comic): Int
+
 }

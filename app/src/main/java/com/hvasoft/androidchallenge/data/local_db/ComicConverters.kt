@@ -27,28 +27,6 @@ class ComicConverters {
     }
 
     @TypeConverter
-    fun fromDatesList(dates: MutableList<Date>): String {
-        return Gson().toJson(dates)
-    }
-
-    @TypeConverter
-    fun toDatesList(datesString: String): MutableList<Date> {
-        val listType = object : TypeToken<MutableList<Date>>() {}.type
-        return Gson().fromJson(datesString, listType)
-    }
-
-    @TypeConverter
-    fun fromImagesList(images: MutableList<Image>): String {
-        return Gson().toJson(images)
-    }
-
-    @TypeConverter
-    fun toImagesList(imagesString: String): MutableList<Image> {
-        val listType = object : TypeToken<MutableList<Image>>() {}.type
-        return Gson().fromJson(imagesString, listType)
-    }
-
-    @TypeConverter
     fun fromVariantList(variants: MutableList<Variant>): String {
         return Gson().toJson(variants)
     }

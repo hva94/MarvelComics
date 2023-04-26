@@ -2,8 +2,9 @@ package com.hvasoft.androidchallenge.di
 
 import com.hvasoft.androidchallenge.BuildConfig
 import com.hvasoft.androidchallenge.core.Constants.BASE_URL
-import com.hvasoft.androidchallenge.core.Constants.PRIVATE_KEY
-import com.hvasoft.androidchallenge.core.Constants.PUBLIC_KEY
+import com.hvasoft.androidchallenge.core.Constants.ORDER_BY_PARAM
+import com.hvasoft.androidchallenge.core.Constants.PRIVATE_KEY_PARAM
+import com.hvasoft.androidchallenge.core.Constants.PUBLIC_KEY_PARAM
 import com.hvasoft.androidchallenge.core.Constants.TS_PARAM
 import com.hvasoft.androidchallenge.core.utils.ExtFunc.toMD5
 import com.hvasoft.androidchallenge.data.remote_db.ApiHelper
@@ -32,9 +33,10 @@ object ComicApiModule {
                 val originalRequest = chain.request()
                 val originalUrl = originalRequest.url
                 val newUrl = originalUrl.newBuilder()
+                    .addQueryParameter("orderBy", ORDER_BY_PARAM)
                     .addQueryParameter("ts", TS_PARAM)
-                    .addQueryParameter("apikey", PUBLIC_KEY)
-                    .addQueryParameter("hash", (TS_PARAM + PRIVATE_KEY + PUBLIC_KEY).toMD5())
+                    .addQueryParameter("apikey", PUBLIC_KEY_PARAM)
+                    .addQueryParameter("hash", (TS_PARAM + PRIVATE_KEY_PARAM + PUBLIC_KEY_PARAM).toMD5())
                     .build()
                 val requestBuilder = originalRequest.newBuilder().url(newUrl)
             return@Interceptor chain.proceed(requestBuilder.build())

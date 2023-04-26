@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hvasoft.androidchallenge.R
 import com.hvasoft.androidchallenge.core.utils.ExtFunc.loadImage
+import com.hvasoft.androidchallenge.core.utils.ExtFunc.url
 import com.hvasoft.androidchallenge.data.models.Comic
-import com.hvasoft.androidchallenge.data.models.url
 import com.hvasoft.androidchallenge.databinding.ItemComicBinding
 
 class HomeComicListAdapter(private val onClickListener: OnClickListener) :
@@ -33,7 +33,7 @@ class HomeComicListAdapter(private val onClickListener: OnClickListener) :
             setListener(comic)
 
             binding.tvName.text = comic.title
-            binding.ivPhoto.loadImage(comic.thumbnail.url())
+            binding.ivComicPhoto.loadImage(comic.thumbnail.url())
         }
     }
 

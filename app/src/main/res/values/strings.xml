@@ -2,13 +2,20 @@
     <string name="app_name">Android Challenge</string>
 
     <string name="description_img_photo">Comic image</string>
-
-    <string name="label_favorites">Favorites</string>
-    <string name="label_comic_detail">Comic Detail</string>
-
     <string name="hint_search">Search</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_favorites">Favorites</string>
+    <string name="label_add_favorite">Add to Favorites</string>
+    <string name="label_variants">Variants</string>
+    <string name="label_comic_detail">Comic Detail</string>
+
+    <string name="text_creator">Creator: %1$s</string>
+    <string name="text_role">Role: %1$s</string>
+    <string name="text_remove_favorite">Remove from favorite</string>
+    <string name="text_add_favorite">Add to favorite</string>
+
+    <string name="error_network">Network error, please check your connection and try again later.</string>
+    <string name="error_update">Failed to update.</string>
+    <string name="error_unknown">Unknown error.</string>
 
 </resources>

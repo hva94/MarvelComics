@@ -3,7 +3,7 @@ package com.hvasoft.androidchallenge.presentation.home_comic_list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hvasoft.androidchallenge.data.models.Comic
-import com.hvasoft.androidchallenge.domain.use_case.ComicUseCases
+import com.hvasoft.androidchallenge.domain.use_case.ComicsUseCases
 import com.hvasoft.androidchallenge.domain.utils.Resource
 import com.hvasoft.androidchallenge.domain.utils.Status
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeComicListViewModel @Inject constructor(
-    private val useCases: ComicUseCases,
+    private val useCases: ComicsUseCases,
 ) : ViewModel() {
 
     private val _stateFlowComicList =
@@ -23,10 +23,10 @@ class HomeComicListViewModel @Inject constructor(
     val stateFlowComicList = _stateFlowComicList.asStateFlow()
 
     init {
-        getInitialComics()
+        getComics()
     }
 
-    private fun getInitialComics() {
+    fun getComics() {
         viewModelScope.launch(Dispatchers.IO) {
             useCases.getComics().collect {
                 _stateFlowComicList.value = it

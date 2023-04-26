@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.AndroidChallenge.PhotoGrid">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/margin_image_shape</item>
+        <item name="cornerSizeTopRight">@dimen/margin_image_shape</item>
+        <item name="cornerSizeBottomLeft">@dimen/margin_image_shape</item>
+        <item name="cornerSizeBottomRight">@dimen/margin_image_shape</item>
+    </style>
+
+</resources>

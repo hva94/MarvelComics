@@ -7,4 +7,6 @@ import javax.inject.Inject
 @HiltViewModel
 class FavoriteComicViewModel@Inject constructor() : ViewModel() {
 
+
+
 }
