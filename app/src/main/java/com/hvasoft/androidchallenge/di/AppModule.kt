@@ -26,7 +26,8 @@ object AppModule {
         getComicsByStartingTitle = GetComicsByStartingTitleUseCase(repository),
         getComicDetail = GetComicDetailUseCase(repository),
         getVariants = GetVariantsUseCase(repository),
-        updateFavorite = UpdateFavoriteUseCase(repository)
+        updateFavorite = UpdateFavoriteUseCase(repository),
+        getFavoriteComics = GetFavoriteComicsUseCase(repository)
     )
 
 }

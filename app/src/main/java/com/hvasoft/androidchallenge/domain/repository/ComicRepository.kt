@@ -21,4 +21,6 @@ interface ComicRepository {
 
     suspend fun getThumbnailCreator(creatorId: String): Response<CreatorDataWrapper>
 
+    fun getFavoriteComics(): Flow<Resource<List<Comic>>>
+
 }

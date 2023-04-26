@@ -44,9 +44,16 @@ class HomeComicListFragment : Fragment(), OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupBtnFavorite()
         setupSearchView()
         setupRecyclerView()
         setupViewModel()
+    }
+
+    private fun setupBtnFavorite() {
+        binding.btnFavorites.setOnClickListener {
+            findNavController().navigate(R.id.action_homeComicListFragment_to_favoriteComicListFragment)
+        }
     }
 
     private fun setupSearchView() {
@@ -64,8 +71,8 @@ class HomeComicListFragment : Fragment(), OnClickListener {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText.isNullOrEmpty()) {
                     homeComicListViewModel.getComics()
-                    hideKeyboard()
                     binding.searchView.clearFocus()
+                    hideKeyboard()
                 }
                 return true
             }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/common_padding_min"
-    tools:context=".presentation.favorite_comic_list.FavoriteComicFragment">
+    tools:context=".presentation.favorite_comic_list.FavoriteComicListFragment">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivComicPhoto"

@@ -9,7 +9,7 @@ object Constants {
     const val GET_CREATORS_PATH = "v1/public/creators"
     val TS_PARAM = Timestamp(System.currentTimeMillis()).time.toString()
     const val LIMIT_PARAM = "limit"
-    const val LIMIT_VALUE = 5
+    const val LIMIT_VALUE = 50
     const val LIMIT_MIN_VALUE = 1
     const val TITLE_STARTS_PARAM = "titleStartsWith"
     const val ID_PARAM = "id"

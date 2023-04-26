@@ -9,6 +9,7 @@ import com.hvasoft.androidchallenge.domain.repository.ComicRepository
 import com.hvasoft.androidchallenge.domain.utils.Resource
 import com.hvasoft.androidchallenge.domain.utils.networkBoundResource
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -18,11 +19,9 @@ class ComicRepositoryImpl @Inject constructor(
 ) : ComicRepository {
 
     override fun getComics(): Flow<Resource<List<Comic>>> {
-        return networkBoundResource(
-            query = { comicDao.getAllComics() },
-            fetch = { apiHelper.getComics() },
-            saveFetchResult = { comics -> comicDao.insertAll(comics.body()!!.comicsData.results) }
-        )
+        return comicDao.getAllComics().map { comics ->
+            Resource.success(comics.sortedBy { it.title })
+        }
     }
 
     override fun getComicsByStartingTitle(title: String): Flow<Resource<List<Comic>>> {
@@ -47,6 +46,12 @@ class ComicRepositoryImpl @Inject constructor(
 
     override suspend fun getThumbnailCreator(creatorId: String): Response<CreatorDataWrapper> {
         return apiHelper.getThumbnailCreator(creatorId)
+    }
+
+    override fun getFavoriteComics(): Flow<Resource<List<Comic>>> {
+        return comicDao.getAllComics().map { comics ->
+            Resource.success(comics.filter { it.isFavorite }.sortedBy { it.title })
+        }
     }
 
 }

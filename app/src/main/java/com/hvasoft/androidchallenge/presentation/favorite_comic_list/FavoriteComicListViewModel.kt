@@ -1,4 +1,4 @@
-package com.hvasoft.androidchallenge.presentation.home_comic_list
+package com.hvasoft.androidchallenge.presentation.favorite_comic_list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeComicListViewModel @Inject constructor(
+class FavoriteComicListViewModel@Inject constructor(
     private val useCases: ComicsUseCases
 ) : ViewModel() {
 
@@ -23,22 +23,15 @@ class HomeComicListViewModel @Inject constructor(
     val stateFlowComicList = _stateFlowComicList.asStateFlow()
 
     init {
-        getComics()
+        getFavoriteComics()
     }
 
-    fun getComics() {
+    private fun getFavoriteComics() {
         viewModelScope.launch(Dispatchers.IO) {
-            useCases.getComics().collect {
+            useCases.getFavoriteComics().collect {
                 _stateFlowComicList.value = it
             }
         }
     }
 
-    fun getComicsByStartingTitle(title: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            useCases.getComicsByStartingTitle(title).collect {
-                _stateFlowComicList.value = it
-            }
-        }
-    }
 }

@@ -13,7 +13,11 @@
         <action
             android:id="@+id/action_homeComicListFragment_to_detailComicFragment"
             app:destination="@id/detailComicFragment" />
+        <action
+            android:id="@+id/action_homeComicListFragment_to_favoriteComicListFragment"
+            app:destination="@id/favoriteComicListFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/detailComicFragment"
         android:name="com.hvasoft.androidchallenge.presentation.detail.DetailComicFragment"
@@ -25,6 +29,22 @@
             android:name="comicId"
             android:defaultValue="0"
             app:argType="string" />
+        <action
+            android:id="@+id/action_detailComicFragment_to_favoriteComicListFragment"
+            app:destination="@id/favoriteComicListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/favoriteComicListFragment"
+        android:name="com.hvasoft.androidchallenge.presentation.favorite_comic_list.FavoriteComicListFragment"
+        android:label="@string/label_favorite_list"
+        tools:layout="@layout/fragment_favorite_comic_list" >
+        <action
+            android:id="@+id/action_favoriteComicListFragment_to_detailComicFragment"
+            app:destination="@id/detailComicFragment" />
+        <action
+            android:id="@+id/action_favoriteComicListFragment_to_homeComicListFragment"
+            app:destination="@id/homeComicListFragment" />
     </fragment>
 
 </navigation>

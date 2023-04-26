@@ -8,6 +8,7 @@
     <string name="label_add_favorite">Add to Favorites</string>
     <string name="label_variants">Variants</string>
     <string name="label_comic_detail">Comic Detail</string>
+    <string name="label_favorite_list">Favorite Comic List</string>
 
     <string name="text_creator">Creator: %1$s</string>
     <string name="text_role">Role: %1$s</string>

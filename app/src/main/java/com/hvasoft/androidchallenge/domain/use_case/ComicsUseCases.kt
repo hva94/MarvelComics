@@ -5,5 +5,6 @@ data class ComicsUseCases(
     val getComicsByStartingTitle: GetComicsByStartingTitleUseCase,
     val getComicDetail: GetComicDetailUseCase,
     val getVariants: GetVariantsUseCase,
-    val updateFavorite: UpdateFavoriteUseCase
+    val updateFavorite: UpdateFavoriteUseCase,
+    val getFavoriteComics: GetFavoriteComicsUseCase
 )
