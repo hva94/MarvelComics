@@ -9,25 +9,31 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivComicPhoto"
-        android:layout_width="@dimen/photo_width"
-        android:layout_height="@dimen/photo_height"
+        android:layout_width="@dimen/item_width"
+        android:layout_height="@dimen/item_height"
         android:contentDescription="@null"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:paddingBottom="@dimen/common_padding_default"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearance="@style/Theme.AndroidChallenge.PhotoGrid" />
+
+    <ProgressBar
+        android:id="@+id/pbComicImage"
+        style="?android:progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/ivComicPhoto"
+        app:layout_constraintTop_toTopOf="@id/ivComicPhoto"/>
 
     <TextView
         android:id="@+id/tvComicTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_padding_min"
-        android:textColor="@color/black"
-        android:textSize="16sp"
         android:maxLines="2"
+        android:textColor="?android:textColorPrimary"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivComicPhoto"
         app:layout_constraintTop_toTopOf="parent"
@@ -38,8 +44,6 @@
         android:layout_width="0dp"
         android:layout_height="160dp"
         android:layout_margin="@dimen/common_padding_min"
-        android:textColor="@color/black"
-        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivComicPhoto"
         app:layout_constraintTop_toBottomOf="@id/tvComicTitle"
@@ -50,8 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/common_padding_min"
-            android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textColor="?android:textColorPrimary"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivComicPhoto"
             app:layout_constraintTop_toBottomOf="@id/tvComicTitle"
@@ -74,8 +78,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@null"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_foreground" />
+            android:scaleType="centerCrop"/>
+
+        <ProgressBar
+            android:id="@+id/pbCreatorImage"
+            style="?android:progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -83,8 +93,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_padding_default"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         app:layout_constraintBottom_toBottomOf="@id/cvCreator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/cvCreator"
@@ -97,8 +106,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_padding_default"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         app:layout_constraintBottom_toBottomOf="@id/cvCreator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/cvCreator"
@@ -112,8 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_padding_min"
         android:text="@string/label_variants"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cvCreator" />
@@ -124,8 +131,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_padding_min"
         android:clipToPadding="false"
+        android:layoutAnimation="@anim/layout_animation"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/common_padding_default"
+        android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,11 +147,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_padding_min"
         android:background="@color/black"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rvVariants"
-        tools:text="@string/label_add_favorite" />
+        tools:text="@string/text_add_favorite" />
 
     <ProgressBar
         android:id="@+id/progressBar"

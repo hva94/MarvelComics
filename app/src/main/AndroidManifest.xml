@@ -4,6 +4,7 @@
 
     <!--Internet permission for loading images from the internet.-->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <!--Application name added for Dagger Hilt-->
     <application
@@ -14,8 +15,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AndroidChallenge"
-        tools:targetApi="31">
+        android:theme="@style/splashScreenTheme"
+        tools:targetApi="33">
         <activity
             android:name=".presentation.HostActivity"
             android:exported="true">

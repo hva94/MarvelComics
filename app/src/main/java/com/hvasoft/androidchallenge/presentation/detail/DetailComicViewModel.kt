@@ -2,6 +2,7 @@ package com.hvasoft.androidchallenge.presentation.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hvasoft.androidchallenge.core.exceptions.ComicsException
 import com.hvasoft.androidchallenge.core.exceptions.TypeError
 import com.hvasoft.androidchallenge.data.models.Comic
 import com.hvasoft.androidchallenge.data.models.Variant
@@ -19,11 +20,11 @@ class DetailComicViewModel @Inject constructor(
     private val useCases: ComicsUseCases,
 ) : ViewModel() {
 
-    private val _stateFlowVariantList = MutableStateFlow(listOf<Variant>())
-    val stateFlowVariantList = _stateFlowVariantList.asStateFlow()
-
     private val _displayComic = MutableStateFlow<Comic?>(null)
     val displayComic = _displayComic.asStateFlow()
+
+    private val _stateFlowVariantList = MutableStateFlow(listOf<Variant>())
+    val stateFlowVariantList = _stateFlowVariantList.asStateFlow()
 
     private val _isFavoriteStateFlow = MutableStateFlow(false)
     val isFavoriteTextStateFlow = _isFavoriteStateFlow.asStateFlow()
@@ -38,15 +39,12 @@ class DetailComicViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             _isLoading.value = true
             try {
-                useCases.getComicDetail(comicId).collect { comic ->
-                    val variantList = comic.variants
-                    useCases.getVariants(variantList).collect { variants ->
-                        _stateFlowVariantList.value = variants
-                    }
-                    _displayComic.value = comic
-                    _isFavoriteStateFlow.value = comic.isFavorite
+                useCases.getComicDetail(comicId).collect {
+                    _stateFlowVariantList.value = it.variants
+                    _displayComic.value = it
+                    _isFavoriteStateFlow.value = it.isFavorite
                 }
-            } catch (e: IOException) {
+            } catch (e: ComicsException) {
                 _typeError.value = TypeError.NETWORK
             } finally {
                 _isLoading.value = false
@@ -55,7 +53,7 @@ class DetailComicViewModel @Inject constructor(
     }
 
     fun updateFavorite() {
-        val comic = displayComic.value ?: return
+        val comic: Comic = displayComic.value ?: return
         comic.isFavorite = !comic.isFavorite
 
         viewModelScope.launch(Dispatchers.IO) {

@@ -23,6 +23,6 @@ data class Comic(
     val title: String,
     val upc: String,
     val variantDescription: String,
-    val variants: List<Variant>,
+    var variants: List<Variant>,
     var isFavorite: Boolean = false,
 )

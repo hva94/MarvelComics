@@ -12,14 +12,13 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hvasoft.androidchallenge.R
-import com.hvasoft.androidchallenge.core.utils.ExtFunc.hideKeyboard
-import com.hvasoft.androidchallenge.core.utils.ExtFunc.showMessage
+import com.hvasoft.androidchallenge.core.utils.hideKeyboard
+import com.hvasoft.androidchallenge.core.utils.showMessage
 import com.hvasoft.androidchallenge.data.models.Comic
 import com.hvasoft.androidchallenge.databinding.FragmentHomeComicListBinding
 import com.hvasoft.androidchallenge.domain.utils.Status
 import com.hvasoft.androidchallenge.presentation.home_comic_list.adapter.HomeComicListAdapter
 import com.hvasoft.androidchallenge.presentation.home_comic_list.adapter.OnClickListener
-import com.hvasoft.androidchallenge.presentation.utils.GridSpacingItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -85,7 +84,6 @@ class HomeComicListFragment : Fragment(), OnClickListener {
         binding.recyclerView.apply {
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(context, resources.getInteger(R.integer.main_columns))
-            addItemDecoration(GridSpacingItemDecoration())
             adapter = homeComicListAdapter
         }
     }
@@ -105,6 +103,13 @@ class HomeComicListFragment : Fragment(), OnClickListener {
                         Status.SUCCESS -> {
                             homeComicListAdapter.submitList(it.data)
                             binding.progressBar.visibility = View.INVISIBLE
+                            binding.emptyStateLayout.run {
+                                visibility = if (it.data.isNullOrEmpty()) {
+                                    View.VISIBLE
+                                } else {
+                                    View.GONE
+                                }
+                            }
                         }
                     }
                 }

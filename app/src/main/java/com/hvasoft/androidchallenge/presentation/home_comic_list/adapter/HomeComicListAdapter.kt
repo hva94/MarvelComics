@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hvasoft.androidchallenge.R
-import com.hvasoft.androidchallenge.core.utils.ExtFunc.loadImage
-import com.hvasoft.androidchallenge.core.utils.ExtFunc.url
+import com.hvasoft.androidchallenge.core.utils.loadImage
+import com.hvasoft.androidchallenge.core.utils.url
 import com.hvasoft.androidchallenge.data.models.Comic
 import com.hvasoft.androidchallenge.databinding.ItemComicBinding
 

@@ -1,7 +1,7 @@
 package com.hvasoft.androidchallenge.domain.use_case
 
 import com.hvasoft.androidchallenge.data.models.Comic
-import com.hvasoft.androidchallenge.domain.repository.ComicRepository
+import com.hvasoft.androidchallenge.domain.ComicRepository
 import com.hvasoft.androidchallenge.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

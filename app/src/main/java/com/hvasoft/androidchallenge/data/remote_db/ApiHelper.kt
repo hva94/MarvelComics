@@ -7,6 +7,6 @@ import retrofit2.Response
 interface ApiHelper {
     suspend fun getComics(): Response<ComicDataWrapper>
     suspend fun getComicsByStartingTitle(title: String): Response<ComicDataWrapper>
-    suspend fun getVariant(comicId: String): Response<ComicDataWrapper>
-    suspend fun getThumbnailCreator(creatorId: String): Response<CreatorDataWrapper>
+    suspend fun getComicById(id: String): Response<ComicDataWrapper>
+    suspend fun getThumbnailCreatorById(id: String): Response<CreatorDataWrapper>
 }

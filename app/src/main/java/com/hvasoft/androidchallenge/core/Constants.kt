@@ -20,4 +20,6 @@ object Constants {
 
     const val DATABASE_NAME = "comics_db"
     const val TABLE_NAME_COMICS = "comics"
+    const val TABLE_NAME_CREATORS = "creators"
+
 }

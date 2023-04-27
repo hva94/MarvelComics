@@ -23,11 +23,12 @@ interface ApiService {
     @GET(GET_COMICS_PATH)
     suspend fun getComicsByStartingTitle(
         @Query(TITLE_STARTS_PARAM) titleStartsWith: String,
+        @Query(NO_VARIANTS_PARAM) noVariants: Boolean = false,
         @Query(LIMIT_PARAM) limit: Int = LIMIT_VALUE
     ): Response<ComicDataWrapper>
 
     @GET(GET_COMICS_PATH)
-    suspend fun getVariant(
+    suspend fun getComicById(
         @Query(ID_PARAM) comicId: String,
         @Query(NO_VARIANTS_PARAM) noVariants: Boolean = true,
         @Query(LIMIT_PARAM) limit: Int = LIMIT_VALUE

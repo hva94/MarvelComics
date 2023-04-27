@@ -19,7 +19,7 @@ class FavoriteComicListViewModel@Inject constructor(
 ) : ViewModel() {
 
     private val _stateFlowComicList =
-        MutableStateFlow(Resource<List<Comic>>(Status.SUCCESS, emptyList(), null))
+        MutableStateFlow(Resource<List<Comic>>(Status.LOADING, emptyList(), null))
     val stateFlowComicList = _stateFlowComicList.asStateFlow()
 
     init {

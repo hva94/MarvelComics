@@ -15,6 +15,7 @@ class HostActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_AndroidChallenge)
         setContentView(R.layout.activity_host)
 
         setupNavigation()

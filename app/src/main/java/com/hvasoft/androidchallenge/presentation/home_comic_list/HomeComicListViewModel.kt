@@ -10,7 +10,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
+import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,7 +21,7 @@ class HomeComicListViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _stateFlowComicList =
-        MutableStateFlow(Resource<List<Comic>>(Status.SUCCESS, emptyList(), null))
+        MutableStateFlow(Resource<List<Comic>>(Status.LOADING, emptyList(), null))
     val stateFlowComicList = _stateFlowComicList.asStateFlow()
 
     init {
@@ -27,17 +29,33 @@ class HomeComicListViewModel @Inject constructor(
     }
 
     fun getComics() {
+        _stateFlowComicList.value = Resource.loading(null)
+
         viewModelScope.launch(Dispatchers.IO) {
-            useCases.getComics().collect {
-                _stateFlowComicList.value = it
+            try {
+                useCases.getComics().collect {
+                    _stateFlowComicList.value = it
+                }
+            } catch (e: IOException) {
+                _stateFlowComicList.value = Resource.error(e.message.toString(), null)
             }
         }
     }
 
     fun getComicsByStartingTitle(title: String) {
+        _stateFlowComicList.value = Resource.loading(null)
+
         viewModelScope.launch(Dispatchers.IO) {
-            useCases.getComicsByStartingTitle(title).collect {
-                _stateFlowComicList.value = it
+            try {
+                useCases.getComicsByStartingTitle(title).onCompletion {
+                    if (it == null) {
+                        _stateFlowComicList.value = Resource.error("Failed to fetch data", null)
+                    }
+                }.collect {
+                    _stateFlowComicList.value = it
+                }
+            } catch (e: IOException) {
+                _stateFlowComicList.value = Resource.error(e.message.toString(), null)
             }
         }
     }

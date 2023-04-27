@@ -2,8 +2,10 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/item_card_height">
+    android:layout_width="@dimen/item_width"
+    android:layout_height="@dimen/item_height"
+    android:layout_marginStart="@dimen/common_padding_default"
+    android:layout_marginTop="@dimen/common_padding_default">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,7 +15,6 @@
             android:id="@+id/ivComicPhoto"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@android:color/darker_gray"
             android:contentDescription="@string/description_img_photo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -22,15 +23,15 @@
 
         <TextView
             android:id="@+id/tvName"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/design_default_color_primary"
             android:ellipsize="end"
             android:maxLines="1"
             android:padding="@dimen/common_padding_min"
-            android:textSize="12sp"
-            android:textColor="@color/white"
             android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@color/white"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
