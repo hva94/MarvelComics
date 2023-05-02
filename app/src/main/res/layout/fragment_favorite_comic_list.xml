@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.favorite_comic_list.FavoriteComicListFragment">
+    tools:context=".presentation.favorite_list.FavoriteComicListFragment">
 
     <ViewStub
         android:id="@+id/emptyStateLayout"

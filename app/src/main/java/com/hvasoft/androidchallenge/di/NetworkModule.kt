@@ -2,7 +2,6 @@ package com.hvasoft.androidchallenge.di
 
 import com.hvasoft.androidchallenge.BuildConfig
 import com.hvasoft.androidchallenge.core.Constants.BASE_URL
-import com.hvasoft.androidchallenge.core.Constants.ORDER_BY_PARAM
 import com.hvasoft.androidchallenge.core.Constants.PRIVATE_KEY_PARAM
 import com.hvasoft.androidchallenge.core.Constants.PUBLIC_KEY_PARAM
 import com.hvasoft.androidchallenge.core.Constants.TS_PARAM
@@ -30,17 +29,18 @@ object NetworkModule {
     fun provideHttpClient(): OkHttpClient {
         val builder = OkHttpClient.Builder()
         val interceptor = Interceptor { chain: Interceptor.Chain ->
-                val originalRequest = chain.request()
-                val originalUrl = originalRequest.url
-                val newUrl = originalUrl.newBuilder()
-                    .addQueryParameter("orderBy", ORDER_BY_PARAM)
-                    .addQueryParameter("ts", TS_PARAM)
-                    .addQueryParameter("apikey", PUBLIC_KEY_PARAM)
-                    .addQueryParameter("hash", (TS_PARAM + PRIVATE_KEY_PARAM + PUBLIC_KEY_PARAM).toMD5())
-                    .build()
-                val requestBuilder = originalRequest.newBuilder().url(newUrl)
+            val originalRequest = chain.request()
+            val originalUrl = originalRequest.url
+            val newUrl = originalUrl.newBuilder()
+                .addQueryParameter("ts", TS_PARAM)
+                .addQueryParameter("apikey", PUBLIC_KEY_PARAM)
+                .addQueryParameter(
+                    "hash", (TS_PARAM + PRIVATE_KEY_PARAM + PUBLIC_KEY_PARAM).toMD5()
+                )
+                .build()
+            val requestBuilder = originalRequest.newBuilder().url(newUrl)
             return@Interceptor chain.proceed(requestBuilder.build())
-             }
+        }
         builder.addInterceptor(interceptor)
         if (BuildConfig.DEBUG) {
             val loggingInterceptor = HttpLoggingInterceptor().apply {
@@ -66,4 +66,5 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper
+
 }

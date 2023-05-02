@@ -3,11 +3,13 @@ package com.hvasoft.androidchallenge.data.local_db
 import android.content.Context
 import androidx.room.*
 import com.hvasoft.androidchallenge.core.Constants.DATABASE_NAME
-import com.hvasoft.androidchallenge.data.models.Comic
-import com.hvasoft.androidchallenge.data.models.Creator
+import com.hvasoft.androidchallenge.data.local_db.dao.ComicDao
+import com.hvasoft.androidchallenge.data.local_db.dao.CreatorDao
+import com.hvasoft.androidchallenge.data.model.Comic
+import com.hvasoft.androidchallenge.data.model.CreatorEntity
 
 @Database(
-    entities = [Comic::class, Creator::class],
+    entities = [Comic::class, CreatorEntity::class],
     version = 1,
     exportSchema = false
 )

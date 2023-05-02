@@ -26,7 +26,9 @@ object RepositoryModule {
         getComicsByStartingTitle = GetComicsByStartingTitleUseCase(repository),
         getComicDetail = GetComicDetailUseCase(repository),
         updateFavorite = UpdateFavoriteUseCase(repository),
-        getFavoriteComics = GetFavoriteComicsUseCase(repository)
+        getFavoriteComics = GetFavoriteComicsUseCase(repository),
+        getFirstCreator = GetFirstCreatorUseCase(repository),
+        getVariants = GetVariantsUseCase(repository)
     )
 
 }

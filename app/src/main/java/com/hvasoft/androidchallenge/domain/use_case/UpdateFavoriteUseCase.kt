@@ -3,7 +3,7 @@ package com.hvasoft.androidchallenge.domain.use_case
 import android.database.sqlite.SQLiteConstraintException
 import com.hvasoft.androidchallenge.core.exceptions.ComicsException
 import com.hvasoft.androidchallenge.core.exceptions.TypeError
-import com.hvasoft.androidchallenge.data.models.Comic
+import com.hvasoft.androidchallenge.data.model.Comic
 import com.hvasoft.androidchallenge.domain.ComicRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

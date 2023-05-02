@@ -9,7 +9,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.snackbar.Snackbar
 import com.hvasoft.androidchallenge.R
-import com.hvasoft.androidchallenge.data.models.Thumbnail
+import com.hvasoft.androidchallenge.data.model.Thumbnail
 import java.security.MessageDigest
 
 fun String.toMD5(): String {
@@ -62,3 +62,9 @@ fun Thumbnail.url(): String {
     val url = "$path.$extension"
     return url.replace("http", "https")
 }
+
+// Not implemented
+fun Fragment.isNetworkConnected(): Boolean {
+    return isNetworkConnected(requireContext())
+}
+

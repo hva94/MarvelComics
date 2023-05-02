@@ -69,6 +69,15 @@ But before I show you the commits, I want to explain the main development steps 
 - Validations and debugging
 - Documentation created
 
+### Commit 6: Extra improvements
+- Delete all the code and files unused
+- Data persistence improved
+- Repository refactored
+- Domain layer refactored
+- Use Cases and Utils
+- ViewModels standardized
+- Data Flow improved
+
 
 
 ### Tech Stack

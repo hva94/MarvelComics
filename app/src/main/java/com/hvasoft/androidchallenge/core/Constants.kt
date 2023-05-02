@@ -13,7 +13,12 @@ object Constants {
     const val LIMIT_MIN_VALUE = 1
     const val TITLE_STARTS_PARAM = "titleStartsWith"
     const val ID_PARAM = "id"
-    const val ORDER_BY_PARAM = "modified"
+    const val FORMAT_PARAM = "format"
+    const val FORMAT_VALUE = "comic"
+    const val FORMAT_TYPE_PARAM = "formatType"
+    const val FORMAT_TYPE_VALUE = "comic"
+    const val ORDER_BY_PARAM = "orderBy"
+    const val ORDER_BY_VALUE = "modified"
     const val NO_VARIANTS_PARAM = "noVariants"
     const val PUBLIC_KEY_PARAM: String = "443fd5d8c265e6f3918267e51dd21653"
     const val PRIVATE_KEY_PARAM: String = "f811ca74bc3c9cacfd67c90db09d1bcf7a3808f5"

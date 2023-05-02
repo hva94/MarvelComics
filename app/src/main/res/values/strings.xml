@@ -19,6 +19,7 @@
     <string name="text_empty_state_favorites">Search and add some of your favorite comics on their detail screen.</string>
 
     <string name="error_network">Network error, please check your connection and try again later.</string>
+    <string name="error_database">Database error, the information could not be retrieved.</string>
     <string name="error_update">Failed to update.</string>
     <string name="error_unknown">Unknown error.</string>
 

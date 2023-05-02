@@ -3,7 +3,9 @@ package com.hvasoft.androidchallenge.data.local_db
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.hvasoft.androidchallenge.data.models.*
+import com.hvasoft.androidchallenge.data.model.Creators
+import com.hvasoft.androidchallenge.data.model.Thumbnail
+import com.hvasoft.androidchallenge.data.model.Variant
 
 class ComicConverters {
     @TypeConverter
