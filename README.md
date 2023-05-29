@@ -1,5 +1,5 @@
-# ✪ Kinedu Android Challenge by hva94 - [linkedin.com/in/hva94](https://www.linkedin.com/in/hva94/)
-## Marvel Comics (API-Driven Master-Detail Android Application)
+# ✪ Marvel Comics by hva94 - [linkedin.com/in/hva94](https://www.linkedin.com/in/hva94/)
+## API-Driven Master-Detail Android Application
 I decide split all the project in 5 commits, to show the development process of the mains steps.
 
 But before I show you the commits, I want to explain the main development steps of the challenge.
